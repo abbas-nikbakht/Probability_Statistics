@@ -12,8 +12,21 @@ app.layout = html.Div([
     dcc.Store(id='date_Expected_list', data=[]),
 
     dcc.Graph(id='graph'),
+    html.Div(
+    html.Button("Rolling the dice", n_clicks=0, id="button", style={
+            "fontSize": "20px",
+            "padding": "10px 25px"
+        }),
+    style={
+        "display": "flex",
+        "justifyContent": "center",
+        "position": "fixed",
+        "bottom": "20px",
+        "width": "100%"
+    }),
+    
     html.Div(id='Score_value'),
-    html.Button("Rolling the dice", n_clicks=0, id="button"),
+
 ])
 
 @callback(
@@ -60,7 +73,9 @@ def function1(input1, input2, input3):
     xaxis_title='Number of Samples',
     yaxis_title='Expected Value')
     
-    return fig,sample_distribution_p_x,input2,input3
+    ##
+    output2=f"Outcome= {sample_distribution_p_x}"
+    return fig,output2,input2,input3
 
 
 if __name__ == '__main__':
