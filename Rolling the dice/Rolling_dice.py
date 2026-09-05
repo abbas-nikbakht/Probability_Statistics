@@ -13,20 +13,44 @@ app.layout = html.Div([
 
     dcc.Graph(id='graph'),
     html.Div(
-    html.Button("Rolling the dice", n_clicks=0, id="button", style={
-            "fontSize": "20px",
-            "padding": "10px 25px"
-        }),
-    style={
-        "display": "flex",
-        "justifyContent": "center",
-        "position": "fixed",
-        "bottom": "20px",
-        "width": "100%"
-    }),
+        html.Button("Rolling the dice", n_clicks=0, id="button", style={
+                "fontSize": "20px",
+                "padding": "10px 25px"}),
+        style={
+            "display": "flex",
+            "justifyContent": "center",
+            "position": "fixed",
+            "bottom": "20px",
+            "width": "100%"
+        }
+        ),
     
-    html.Div(id='Score_value'),
+    # html.Div(id='Score_value'),
+    html.Div(
+        id='Score_value',
+        style={
+            'textAlign': 'center',
+            'position': 'relative',
+            'top': '-20px','fontWeight': 'bold','fontSize': '18px'
+        }
+    ),
+    html.Div(
+        html.Img(
+            id='dice_image',
+            src='',
+            style={
+                'width': '65px',
+                'height': '65px',
+                
+            }
+        ),
+        style={
+            'textAlign': 'center',
+            'marginTop': '-15px'
 
+        }
+    )
+    
 ])
 
 @callback(
@@ -34,7 +58,8 @@ app.layout = html.Div([
     Output('Score_value', 'children'),
     Output('sample_list', 'data'),
     Output('date_Expected_list', 'data'),
-
+    Output('dice_image', 'src'),
+    
     Input('button', 'n_clicks'), # input1
     Input('sample_list', 'data'),   # input2
     Input('date_Expected_list', 'data')     # input3
@@ -52,7 +77,7 @@ def function1(input1, input2, input3):
     # Generating a random number OR x_i for size number
     sample_distribution_p_x = distribution_p_x.rvs(size=1)[0] # x_i ~ p(x_i)
     input2.append(sample_distribution_p_x)
-
+    print(sample_distribution_p_x)
     ## Expected value
     Expected = sum(input2)/len(input2)
     input3.append(Expected)
@@ -75,7 +100,10 @@ def function1(input1, input2, input3):
     
     ##
     output2=f"Outcome= {sample_distribution_p_x}"
-    return fig,output2,input2,input3
+    
+    ## place image Dice
+    output4= f'/assets/dice_{sample_distribution_p_x}.png'
+    return fig,output2,input2,input3,output4
 
 
 if __name__ == '__main__':
@@ -83,3 +111,6 @@ if __name__ == '__main__':
         debug=False,
         port=8051
     )
+    
+    
+    
