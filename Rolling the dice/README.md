@@ -1,4 +1,12 @@
 # 🎲 Rolling the Dice — Monte Carlo Simulation
+## 📊 Demo
+
+<p align="center">
+  <img src="./assets/demo.png" width="700">
+</p>
+
+The graph shows how the estimated Expected Value converges toward the theoretical value of 3.5 as the number of samples increases.
+
 
 An interactive **Monte Carlo simulation** that demonstrates how the **Expected Value** of a fair six-sided die can be estimated using repeated random sampling.
 
