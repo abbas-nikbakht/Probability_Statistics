@@ -77,7 +77,6 @@ def function1(input1, input2, input3):
     # Generating a random number OR x_i for size number
     sample_distribution_p_x = distribution_p_x.rvs(size=1)[0] # x_i ~ p(x_i)
     input2.append(sample_distribution_p_x)
-    print(sample_distribution_p_x)
     ## Expected value
     Expected = sum(input2)/len(input2)
     input3.append(Expected)
