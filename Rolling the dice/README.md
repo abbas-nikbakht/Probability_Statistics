@@ -62,10 +62,7 @@ The application displays:
 For \(n\) observed samples \(X_1, X_2, ..., X_n\), the Monte Carlo estimate of the Expected Value is the sample mean:
 
 $$
-\hat{E}[X]
-=
-\frac{1}{n}
-\sum_{i=1}^{n}X_i
+\hat{E}[X] = \frac{1}{n}\sum_{i=1}^{n} X_i
 $$
 
 For example:
