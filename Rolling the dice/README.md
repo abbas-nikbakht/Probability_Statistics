@@ -148,21 +148,24 @@ pip install dash numpy scipy plotly
 
 ## ▶️ Run the Application
 
-Start the Dash application:
-
-```bash
-python app.py
-```
-
-The application runs on:
+If a proxy is enabled on your system, add the following lines before running the application to ensure that local connections to localhost and 127.0.0.1 bypass the proxy:
 
 ```text
-http://127.0.0.1:8051/
+import os
+
+os.environ["NO_PROXY"] = "127.0.0.1,localhost"
+os.environ["no_proxy"] = "127.0.0.1,localhost"
 ```
 
-Open the address in your browser and start rolling the dice.
+These settings prevent proxy-related issues when accessing the application locally.
 
----
+Then run the application normally:
+```text
+python app.py
+```
+After starting the application, open the local URL shown in the terminal, for example:
+
+http://127.0.0.1:8050
 
 ## 📁 Project Structure
 
