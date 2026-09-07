@@ -32,26 +32,22 @@ app.layout = html.Div([
             'textAlign': 'center',
             'position': 'relative',
             'top': '-20px','fontWeight': 'bold','fontSize': '18px'
-        }
-    ),
+            }
+        ),
     html.Div(
         html.Img(
             id='dice_image',
             src='',
             style={
                 'width': '65px',
-                'height': '65px',
-                
-            }
-        ),
+                'height': '65px',}
+            ),
         style={
             'textAlign': 'center',
             'marginTop': '-15px'
-
-        }
-    )
-    
-])
+            }
+        )
+    ])
 
 @callback(
     Output('graph', 'figure'),
