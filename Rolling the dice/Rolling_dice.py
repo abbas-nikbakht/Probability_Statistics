@@ -25,7 +25,6 @@ app.layout = html.Div([
         }
         ),
     
-    # html.Div(id='Score_value'),
     html.Div(
         id='Score_value',
         style={
@@ -88,6 +87,21 @@ def function1(input1, input2, input3):
 
     fig=go.Figure(data)
     
+    fig.add_hline(
+        y=3.5,
+        line_width=3,
+        line_color="green",
+        line_dash="dash")
+    
+    fig.add_annotation(
+        x=0.5,
+        y=3.6,
+        text="E[X]= μ= 3.5",
+        showarrow=False,
+        yshift=10,
+        font=dict(size=16, color="green")
+    )
+        
     fig.update_layout(
     title='Monte Carlo Simulation',
     xaxis_title='Number of Samples',
