@@ -1,6 +1,6 @@
 # 🎲 Rolling the Dice — Monte Carlo Simulation
 <p align="center">
-  <img src="./assets/demo.png" width="800">
+  <img src="./assets/demo.gif" width="800">
 </p>
 
 An interactive **Monte Carlo simulation** that demonstrates how the **Expected Value** of a fair six-sided die can be estimated using repeated random sampling.
