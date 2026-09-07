@@ -245,7 +245,7 @@ Possible extensions of this project include:
 * [ ] Add a configurable number of dice
 * [ ] Add a reset button
 * [ ] Display the number of rolls
-* [ ] Display the theoretical Expected Value on the graph
+* ✅ Display the theoretical Expected Value on the graph
 * [ ] Compare theoretical and empirical distributions
 * [ ] Add variance and standard deviation
 * [ ] Add confidence intervals
