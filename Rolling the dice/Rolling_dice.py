@@ -45,9 +45,48 @@ app.layout = html.Div([
             'textAlign': 'center',
             'marginTop': '-15px'
             }
-        )
-    ])
+        ),
+    
+    # box input number (LEFT)
+    html.Div(
+        dcc.Input(
+            id="num_rolls",
+            type="number",placeholder="Number of rolls",
+            style={"width": "150px","fontSize": "17px"}
+        ),
 
+        style={
+            "position": "absolute",
+            "left": "200px",
+            "top": "480px",
+
+        }
+    ),
+    html.Div(
+        html.Button("Reset", n_clicks=0, id="reset_button", style={
+                "fontSize": "17px",
+                }),
+        style={
+            "position": "absolute",
+            "left": "200px",
+            "top": "510px",
+
+        }
+        ),
+    html.Div(
+        html.Button("Enter", n_clicks=0, id="Enter_button", style={
+                "fontSize": "17px",
+                }),
+        style={
+            "position": "absolute",
+            "left": "300px",
+            "top": "510px",
+
+        }
+        ),
+    
+    ])
+    
 @callback(
     Output('graph', 'figure'),
     Output('Score_value', 'children'),
@@ -57,11 +96,12 @@ app.layout = html.Div([
     
     Input('button', 'n_clicks'), # input1
     Input('sample_list', 'data'),   # input2
-    Input('date_Expected_list', 'data')     # input3
+    Input('date_Expected_list', 'data'),     # input3
+    Input("number_input", "n_submit"),      # input4
 
     )
 
-def function1(input1, input2, input3):
+def function1(input1, input2, input3, input4):
 
     x = np.array([1, 2, 3, 4, 5, 6])
     p_x = np.array([1/6,1/6,1/6,1/6,1/6,1/6])
