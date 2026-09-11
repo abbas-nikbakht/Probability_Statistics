@@ -3,7 +3,7 @@ from dash import Dash, dcc, html, Input, Output, callback
 import numpy as np
 import plotly.graph_objects as go
 from scipy.stats import rv_discrete
-
+from dash import ctx,no_update
 
 app = Dash()
 
@@ -11,9 +11,19 @@ app.layout = html.Div([
     dcc.Store(id='sample_list', data=[]),
     dcc.Store(id='date_Expected_list', data=[]),
 
-    dcc.Graph(id='graph'),
+    dcc.Graph(id='graph',figure=go.Figure(
+                            layout=dict(
+                                title='Monte Carlo Simulation',
+                                xaxis_title='Number of Samples',
+                                yaxis_title='Expected Value'
+                            )
+                        )
+              
+              
+              
+              ),
     html.Div(
-        html.Button("Rolling the dice", n_clicks=0, id="button", style={
+        html.Button("Rolling the dice", n_clicks=0, id="button_one_Rolling_dice", style={
                 "fontSize": "20px",
                 "padding": "10px 25px"}),
         style={
@@ -26,7 +36,8 @@ app.layout = html.Div([
         ),
     
     html.Div(
-        id='Score_value',
+        id='Score_value',children="Outcome = 0",
+
         style={
             'textAlign': 'center',
             'position': 'relative',
@@ -35,8 +46,7 @@ app.layout = html.Div([
         ),
     html.Div(
         html.Img(
-            id='dice_image',
-            src='',
+            id='dice_image',src="/assets/dice_1.png",
             style={
                 'width': '65px',
                 'height': '65px',}
@@ -94,66 +104,73 @@ app.layout = html.Div([
     Output('date_Expected_list', 'data'),
     Output('dice_image', 'src'),
     
-    Input('button', 'n_clicks'), # input1
+    Input('button_one_Rolling_dice', 'n_clicks'), # input1
     Input('sample_list', 'data'),   # input2
     Input('date_Expected_list', 'data'),     # input3
-    Input("number_input", "n_submit"),      # input4
-
     )
 
-def function1(input1, input2, input3, input4):
+def function1(input1, input2, input3):
 
-    x = np.array([1, 2, 3, 4, 5, 6])
-    p_x = np.array([1/6,1/6,1/6,1/6,1/6,1/6])
-    
-    # Discrete probability distribution (Probability Density Function) p(x) 
-    distribution_p_x = rv_discrete(values=(x, p_x))
-  
-    # Generating a random number OR x_i for size number
-    sample_distribution_p_x = distribution_p_x.rvs(size=1)[0] # x_i ~ p(x_i)
-    input2.append(sample_distribution_p_x)
-    ## Expected value
-    Expected = sum(input2)/len(input2)
-    input3.append(Expected)
-
-    ## plot    
-    y=input3
-    x = list(range(1, len(input2) + 1))
-
-    data=go.Scatter(x=x,y=y,mode='lines+markers',
-            marker = dict(color = 'red',  size = 7,symbol = 'circle'),
-            line = dict(color= 'red',width=1)
-            )
-
-    fig=go.Figure(data)
-    
-    fig.add_hline(
-        y=3.5,
-        line_width=3,
-        line_color="green",
-        line_dash="dash")
-    
-    fig.add_annotation(
-        x=0.5,
-        y=3.6,
-        text="E[X]= μ= 3.5",
-        showarrow=False,
-        yshift=10,
-        font=dict(size=16, color="green")
-    )
+    if ctx.triggered_id == "button_one_Rolling_dice":
+   
+        x = np.array([1, 2, 3, 4, 5, 6])
+        p_x = np.array([1/6,1/6,1/6,1/6,1/6,1/6])
         
-    fig.update_layout(
-    title='Monte Carlo Simulation',
-    xaxis_title='Number of Samples',
-    yaxis_title='Expected Value')
+        # Discrete probability distribution (Probability Density Function) p(x) 
+        distribution_p_x = rv_discrete(values=(x, p_x))
+      
+        # Generating a random number OR x_i for size number
+        sample_distribution_p_x = distribution_p_x.rvs(size=1)[0] # x_i ~ p(x_i)
+        input2.append(sample_distribution_p_x)
+        ## Expected value
+        Expected = sum(input2)/len(input2)
+        input3.append(Expected)
     
-    ##
-    output2=f"Outcome= {sample_distribution_p_x}"
+        ## plot    
+        y=input3
+        x = list(range(1, len(input2) + 1))
     
-    ## place image Dice
-    output4= f'/assets/dice_{sample_distribution_p_x}.png'
-    return fig,output2,input2,input3,output4
-
+        data=go.Scatter(x=x,y=y,mode='lines+markers',
+                marker = dict(color = 'red',  size = 7,symbol = 'circle'),
+                line = dict(color= 'red',width=1)
+                )
+    
+        fig=go.Figure(data)
+        
+        fig.add_hline(
+            y=3.5,
+            line_width=3,
+            line_color="green",
+            line_dash="dash")
+        
+        fig.add_annotation(
+            x=0.5,
+            y=3.6,
+            text="E[X]= μ= 3.5",
+            showarrow=False,
+            yshift=10,
+            font=dict(size=16, color="green")
+        )
+            
+        fig.update_layout(
+        title='Monte Carlo Simulation',
+        xaxis_title='Number of Samples',
+        yaxis_title='Expected Value')
+        
+        ##
+        output2=f"Outcome= {sample_distribution_p_x}"
+        
+        ## place image Dice
+        output4= f'/assets/dice_{sample_distribution_p_x}.png'
+        return fig,output2,input2,input3,output4
+    
+    return (
+        no_update,
+        no_update,
+        no_update,
+        no_update,
+        no_update
+    )
 
 if __name__ == '__main__':
     app.run(
