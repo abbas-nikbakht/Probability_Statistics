@@ -1,5 +1,5 @@
 
-from dash import Dash, dcc, html, Input, Output, callback
+from dash import Dash, dcc, html, Input, Output, callback,State
 import numpy as np
 import plotly.graph_objects as go
 from scipy.stats import rv_discrete
@@ -36,7 +36,7 @@ app.layout = html.Div([
         ),
     
     html.Div(
-        id='Score_value',children="Outcome = 0",
+        id='Score_value',children="Outcome = 1",
 
         style={
             'textAlign': 'center',
@@ -59,9 +59,10 @@ app.layout = html.Div([
     
     # box input number (LEFT)
     html.Div(
+
         dcc.Input(
             id="num_rolls",
-            type="number",placeholder="Number of rolls",
+            type="number",placeholder="Number of rolls",min=1,step=1,
             style={"width": "150px","fontSize": "17px"}
         ),
 
@@ -107,10 +108,26 @@ app.layout = html.Div([
     Input('button_one_Rolling_dice', 'n_clicks'), # input1
     Input('sample_list', 'data'),   # input2
     Input('date_Expected_list', 'data'),     # input3
+    Input('reset_button', 'n_clicks'), # input4
+    Input('Enter_button', 'n_clicks'), # input5
+    Input("num_rolls", "n_submit"), # input6
+    State("num_rolls", "value")# input7
     )
 
-def function1(input1, input2, input3):
-
+def function1(input1, input2, input3,input4,input5,input6,input7):
+    
+    # Reset
+    if ctx.triggered_id == "reset_button":
+        return (
+            go.Figure(layout=dict(title='Monte Carlo Simulation',xaxis_title='Number of Samples',
+                                  yaxis_title='Expected Value')),   # graph
+            "Outcome= 1",  # Score
+            [],            # sample_list
+            [],            # expected_list
+            "/assets/dice_1.png"  # dice image
+        )
+    
+    
     if ctx.triggered_id == "button_one_Rolling_dice":
    
         x = np.array([1, 2, 3, 4, 5, 6])
@@ -163,6 +180,22 @@ def function1(input1, input2, input3):
         ## place image Dice
         output4= f'/assets/dice_{sample_distribution_p_x}.png'
         return fig,output2,input2,input3,output4
+    
+    
+    # Enter
+    if ctx.triggered_id == "Enter_button":
+        print(input7)
+        print(type(input7))
+        return (
+            go.Figure(layout=dict(title='Monte Carlo Simulation',xaxis_title='Number of Samples',
+                                  yaxis_title='Expected Value')),   # graph
+            "Outcome= 1",  # Score
+            [],            # sample_list
+            [],            # expected_list
+            "/assets/dice_1.png"  # dice image
+        )
+
+
     
     return (
         no_update,
