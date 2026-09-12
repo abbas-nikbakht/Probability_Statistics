@@ -242,15 +242,12 @@ This simple experiment can therefore serve as an introduction to more advanced *
 
 Possible extensions of this project include:
 
-* [ ] Add a configurable number of dice
-* [ ] Add a reset button
-* [ ] Display the number of rolls
+* ✅ Add a configurable number of dice
+* ✅ Add a reset button
+* ✅ Display the number of rolls
 * ✅ Display the theoretical Expected Value on the graph
 * [ ] Compare theoretical and empirical distributions
 * [ ] Add variance and standard deviation
-* [ ] Add confidence intervals
-* [ ] Add different probability distributions
-* [ ] Extend the simulation to Monte Carlo methods in Reinforcement Learning
 
 ---
 
