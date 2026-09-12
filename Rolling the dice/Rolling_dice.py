@@ -196,15 +196,11 @@ def function1(input1, input2, input3,input4,input5,input6,input7,input8):
     
     # Enter
     if ctx.triggered_id == "Enter_button":
-        print(2222)
         output6=False
         return no_update,no_update,no_update,no_update,no_update,output6
     
     if ctx.triggered_id == "rolling_interval":
-        print(input8)
-        print()
-   
-        # for i in range(1,input7+1):
+
         x = np.array([1, 2, 3, 4, 5, 6])
         p_x = np.array([1/6,1/6,1/6,1/6,1/6,1/6])
         
@@ -256,7 +252,7 @@ def function1(input1, input2, input3,input4,input5,input6,input7,input8):
         output4= f'/assets/dice_{sample_distribution_p_x}.png'
         
         
-        if len(input2) == input7:
+        if len(input2) >= (input7):
             output6 = True
         else:
             output6 = False
