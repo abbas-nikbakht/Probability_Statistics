@@ -88,7 +88,6 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         print("Enter clicked")
 
         disabled=False
-        return no_update,no_update,no_update,no_update,disabled
 
     # when sleep
     if ctx.triggered_id == "input3_sleep":
