@@ -56,7 +56,7 @@ app.layout = html.Div([
     id="input3_sleep",
     interval=500,      # 1000 ms = 1 second
     n_intervals=0,
-    # disabled=True
+    disabled=True
                 ),
     
     dcc.Store(id='input4_store_x', data=[]),
@@ -85,16 +85,11 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         
     # when button click
     if ctx.triggered_id == "input1_button_enter":
-    
         print("Enter clicked")
-    
-       
-        # store_x = []
-        # store_y = []
-    
-        # # Interval 
-        disabled = False
-        
+
+        disabled=False
+        return no_update,no_update,no_update,no_update,disabled
+
     # when sleep
     if ctx.triggered_id == "input3_sleep":
         print("Enter input3_sleep")
