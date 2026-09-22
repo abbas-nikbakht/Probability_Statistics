@@ -7,9 +7,51 @@ from dash import ctx,no_update
 
 app = Dash()
 
+
+
+# # Square
+data_Square= go.Scatter(
+    x=[-1, 1, 1, -1, -1],
+    y=[-1, -1, 1, 1, -1],
+    mode='lines',showlegend=False,line = dict(color= 'black',width=4))
+###### Circle: x² + y² = 1 ######
+# circle_upper
+# y=sqrt(1-x**2)
+x = np.linspace(-1, 1, 500)
+
+data_circle_upper = go.Scatter(
+    x=x,
+    y=np.sqrt(1 - x**2),
+    mode='lines',
+    showlegend=False,line = dict(color= 'blue',width=3)
+
+)
+
+# circle_lower
+# y= - sqrt(1-x**2)
+data_circle_lower = go.Scatter(
+    x=x,
+    y=-np.sqrt(1 - x**2),
+    mode='lines',
+    showlegend=False,line = dict(color= 'blue',width=3)
+)
+
+# plot Square and circle_upper and circle_upper
+fig = go.Figure(data=[data_Square, data_circle_upper, data_circle_lower])
+fig.update_xaxes(range=[-1.05, 1.05])
+fig.update_yaxes(
+    range=[-1.05, 1.05],
+    scaleanchor="x",
+    scaleratio=1
+)
+
+
+
+    
 app.layout = html.Div([
     dcc.Graph(
         id='output2_graph',
+        figure=fig,  
     style={
         'width': '99vw',
         'height': '94vh',
@@ -54,7 +96,7 @@ app.layout = html.Div([
     # sleep
     dcc.Interval(
     id="input3_sleep",
-    interval=500,      # 1000 ms = 1 second
+    interval=100,      # 1000 ms = 1 second
     n_intervals=0,
     disabled=True
                 ),
@@ -82,21 +124,21 @@ app.layout = html.Div([
 
 
 def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,input5_store_y):
-        
+
     # when button click
     if ctx.triggered_id == "input1_button_enter":
-        print("Enter clicked")
+        # print("Enter clicked")
 
         disabled=False
+
         return no_update,no_update,no_update,no_update,disabled
 
     # when sleep
     if ctx.triggered_id == "input3_sleep":
-        print("Enter input3_sleep")
-
+        # print("Enter input3_sleep")
         
         output1_number=input2_number
-          
+        print(output1_number)
         # # Square
         data_Square= go.Scatter(
             x=[-1, 1, 1, -1, -1],
@@ -170,7 +212,8 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         # print(pi)
         
         
-        fig=fig.add_scatter(x=input4_store_x, y=input5_store_y, mode='markers',)
+        fig=fig.add_scatter(x=input4_store_x, y=input5_store_y, mode='markers',
+                            showlegend=False)
     
         output2_graph=fig
             
@@ -179,6 +222,10 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         output4=input5_store_y
         
         disabled=False
+        
+        if len(input4_store_x)>=input2_number:
+            disabled=True
+            
         return output1_number,output2_graph,output3,output4,disabled
     
     return (
