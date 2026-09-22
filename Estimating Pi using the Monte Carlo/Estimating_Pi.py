@@ -93,7 +93,16 @@ app.layout = html.Div([
 
     html.Div(
         id='output1_number',
+        style={
+            "display": "flex",
+            "justifyContent": "center",
+            "position": "fixed",
+            "bottom": "520px",
+            "width": "100%","fontSize": "20px"
+        }
     ),
+    
+    
     # sleep
     dcc.Interval(
     id="input3_sleep",
@@ -138,8 +147,6 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
     if ctx.triggered_id == "input3_sleep":
         # print("Enter input3_sleep")
         
-        output1_number=input2_number
-        print(output1_number)
         # # Square
         data_Square= go.Scatter(
             x=[-1, 1, 1, -1, -1],
@@ -241,6 +248,9 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         
         disabled=False
         
+        number_sample=len(input4_store_x)
+        output1_number=f"Number sample= {number_sample}"
+
         if len(input4_store_x)>=input2_number:
             disabled=True
             
