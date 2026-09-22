@@ -4,6 +4,7 @@ import numpy as np
 from scipy.stats import uniform
 import math
 from dash import ctx,no_update
+import random
 
 app = Dash()
 
@@ -211,9 +212,19 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         # pi = 4 * Points_inside_circle / Points_inside_square
         # print(pi)
         
-        
+        colors = ['red','blue','green','orange','purple','pink','brown','gray',
+                  'cyan','magenta','yellow','lime','navy','teal','olive','maroon',
+                  'aqua','fuchsia','gold','coral','crimson','indigo','khaki',
+                  'lavender','salmon','silver','turquoise','violet','beige',
+                  'chocolate','tomato','plum','orchid','pink','skyblue','lightgreen',
+                  'lightblue', 'darkgreen','darkblue','darkorange','darkred',
+                  'darkviolet']
+        color= colors[0:len(input4_store_x)]
         fig=fig.add_scatter(x=input4_store_x, y=input5_store_y, mode='markers',
-                            showlegend=False)
+                            showlegend=False,marker=dict(
+                                color=color,
+                                size=8
+                                ),)
     
         output2_graph=fig
             
