@@ -90,18 +90,29 @@ app.layout = html.Div([
         ),
     
 
-
+    # show "number sample"
     html.Div(
-        id='output1_number',
+        id='output1_number',children="Number sample = 0",
         style={
             "display": "flex",
             "justifyContent": "center",
             "position": "fixed",
-            "bottom": "520px",
+            "bottom": "510px","left": "-100px",
             "width": "100%","fontSize": "20px"
         }
     ),
     
+    # show "pi"
+    html.Div(
+        id='output6_show_pi',children="Estimation π = ",
+        style={
+            "display": "flex",
+            "justifyContent": "center",
+            "position": "fixed",
+            "bottom": "510px","left": "70px",
+            "width": "100%","fontSize": "20px"
+        }
+    ),
     
     # sleep
     dcc.Interval(
@@ -190,7 +201,6 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
             
         Points_inside_circle=0 # Points inside the circle
         Points_inside_square=0 # Points inside the square
-        # fig = go.Figure()
         
         
         # for _ in range(1,100):
@@ -249,7 +259,7 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         disabled=False
         
         number_sample=len(input4_store_x)
-        output1_number=f"Number sample= {number_sample}"
+        output1_number=f"Number sample = {number_sample}"
 
         if len(input4_store_x)>=input2_number:
             disabled=True
