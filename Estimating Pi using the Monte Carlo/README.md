@@ -79,10 +79,9 @@ Run the Python script:
 ```bash
 python estimating_pi_monte_carlo.py
 ```
+After starting the application, open the local URL shown in the terminal, for example:
 
-The application generates random points inside a square and determines whether each point is located inside or outside the circle.
-
-The estimated value of π is calculated from the generated samples.
+http://127.0.0.1:8051
 
 ---
 
