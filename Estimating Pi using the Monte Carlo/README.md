@@ -24,7 +24,10 @@ The ratio between the number of points inside the circle and the total number of
 
 Therefore:
 
-**π ≈ 4 × (N_inside / N_total)**
+$$
+\pi \approx 4
+\frac{N_{\text{inside}}}{N_{\text{total}}}
+$$
 
 As the number of randomly generated points increases, the estimated value generally approaches the actual value of π.
 
