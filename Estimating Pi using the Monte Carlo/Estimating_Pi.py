@@ -97,19 +97,19 @@ app.layout = html.Div([
             "display": "flex",
             "justifyContent": "center",
             "position": "fixed",
-            "bottom": "510px","left": "-100px",
+            "bottom": "545px","left": "-5px",
             "width": "100%","fontSize": "20px"
         }
     ),
     
     # show "pi"
     html.Div(
-        id='output6_show_pi',children="Estimation π = ",
+        id='output8_show_pi',children="Estimation π = 0.0000000000000 ",
         style={
             "display": "flex",
             "justifyContent": "center",
             "position": "fixed",
-            "bottom": "510px","left": "70px",
+            "bottom": "510px","left": "-5px",
             "width": "100%","fontSize": "20px"
         }
     ),
@@ -124,6 +124,8 @@ app.layout = html.Div([
     
     dcc.Store(id='input4_store_x', data=[]),
     dcc.Store(id='input5_store_y', data=[]),
+    dcc.Store(id='input6_store_Points_inside_circle', data=0),
+    dcc.Store(id='input7_store_Points_inside_square', data=0),
 
 ])
 
@@ -134,29 +136,38 @@ app.layout = html.Div([
     Output('input4_store_x', 'data'),
     Output('input5_store_y', 'data'),
     Output('input3_sleep', 'disabled'),
+    Output('input6_store_Points_inside_circle', 'data'), # Output6
+    Output('input7_store_Points_inside_square', 'data'), # Output7
+    Output('output8_show_pi', 'children'), # Output8
 
     Input('input1_button_enter', 'n_clicks'),
     State('input2_number', 'value'),
     Input("input3_sleep", "n_intervals"), # input3
     Input('input4_store_x', 'data'), # input4
-    Input('input5_store_y', 'data') # input5
+    Input('input5_store_y', 'data'), # input5
+    Input('input6_store_Points_inside_circle', 'data'), # input6
+    Input('input7_store_Points_inside_square', 'data'), # input7
 
 )
 
 
-def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,input5_store_y):
+def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,input5_store_y,input6_store_Points_inside_circle,
+                input7_store_Points_inside_square):
 
     # when button click
     if ctx.triggered_id == "input1_button_enter":
-        # print("Enter clicked")
+        
+        # If the input2_number box does not contain a value
+        if input2_number==None:
+            disabled=True
+    
+        else:
+            disabled=False
 
-        disabled=False
-
-        return no_update,no_update,no_update,no_update,disabled
+        return no_update,no_update,no_update,no_update,disabled,no_update,no_update,no_update
 
     # when sleep
     if ctx.triggered_id == "input3_sleep":
-        # print("Enter input3_sleep")
         
         # # Square
         data_Square= go.Scatter(
@@ -195,15 +206,11 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
             range=[-1.05, 1.05],
             scaleanchor="x",
             scaleratio=1
-        )
-        # output2_graph=fig
-        
-            
-        Points_inside_circle=0 # Points inside the circle
-        Points_inside_square=0 # Points inside the square
+        )        
+           
         
         
-        # for _ in range(1,100):
+        ################## 
         distribution_p_x = uniform(loc=-1, scale=2)
         sample_x = distribution_p_x.rvs(size=1)[0] 
         
@@ -213,22 +220,21 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         # Store for after
         input4_store_x.append(sample_x)
         input5_store_y.append(sample_y)
-    
-        # print(input4_store_x)
+
         # Checking if (x, y) lies inside the circle
         # How to draw a circle using circle equation x^2+y^2=r^2
         radius=math.sqrt(sample_x**2+sample_y**2)
-    
         if radius <= 1:
-            Points_inside_circle= Points_inside_circle+1
+            input6_store_Points_inside_circle= input6_store_Points_inside_circle+1
         
-        # # inside the square
-        # Points_inside_square= Points_inside_square+1
-        
+        # inside the square
+        input7_store_Points_inside_square= input7_store_Points_inside_square+1
+
         # # Estimating value of pi
-        # pi = 4 * Points_inside_circle / Points_inside_square
-        # print(pi)
-        
+        pi = 4 * input6_store_Points_inside_circle / input7_store_Points_inside_square
+        output8_show_pi=f"Estimation π = {pi:.13f}"
+
+        ######################
         color = ['red','blue','green','orange','purple','pink','brown','gray',
                   'cyan','magenta','yellow','lime','navy','teal','olive','maroon',
                   'aqua','fuchsia','gold','coral','crimson','indigo','khaki',
@@ -236,17 +242,17 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
                   'chocolate','tomato','plum','orchid','pink','skyblue','lightgreen',
                   'lightblue', 'darkgreen','darkblue','darkorange','darkred',
                   'darkviolet']
-        
-        colors=[]
-        for _ in range((len(input4_store_x)//42)+1):
-            k=0
-            for i in range(k,42):
-                colors.append(color[i])
+        color="black"
+        # colors=[]
+        # for _ in range((len(input4_store_x)//42)+1):
+        #     k=0
+        #     for i in range(k,42):
+        #         colors.append(color[i])
             
             
         fig=fig.add_scatter(x=input4_store_x, y=input5_store_y, mode='markers',
                             showlegend=False,marker=dict(
-                                color=colors,
+                                color=color,
                                 size=8
                                 ),)
     
@@ -264,9 +270,13 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         if len(input4_store_x)>=input2_number:
             disabled=True
             
-        return output1_number,output2_graph,output3,output4,disabled
+        return (output1_number,output2_graph,output3,output4,disabled,
+                input6_store_Points_inside_circle,input7_store_Points_inside_square,output8_show_pi)
     
     return (
+        no_update,
+        no_update,
+        no_update,
         no_update,
         no_update,
         no_update,
