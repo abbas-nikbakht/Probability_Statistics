@@ -3,3 +3,7 @@
 
 • In the **[plotly-pmf](./plotly-pmf/)** folder, A simple Python function for plotting a Probability Mass Function (PMF) of a discrete random variable using Plotly.
 
+• In the **[Estimating Pi using the Monte Carlo](./Estimating%Pi%using%the%Monte%Carlo/)** folder, This project demonstrates how the value of π (Pi) can be estimated using the Monte Carlo Method and randomly generated points.
+
+
+
