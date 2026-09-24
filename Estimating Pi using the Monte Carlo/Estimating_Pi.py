@@ -170,6 +170,7 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
     # when sleep
     if ctx.triggered_id == "input3_sleep":
         
+        ##################### Square and circle drawing section ##################### 
         # # Square
         data_Square= go.Scatter(
             x=[-1, 1, 1, -1, -1],
@@ -211,7 +212,7 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
            
         
         
-        ################## 
+        ################## The Pi calculation section ##################
         distribution_p_x = uniform(loc=-1, scale=2)
         sample_x = distribution_p_x.rvs(size=1)[0] 
         
@@ -235,7 +236,9 @@ def show_number(input1_button_enter, input2_number,input3_sleep,input4_store_x,i
         pi = 4 * input6_store_Points_inside_circle / input7_store_Points_inside_square
         output8_show_pi=f"Estimation π = {pi:.13f}"
 
-        ######################
+
+
+        ###################### Dot color and dot display section ######################
         colors = ['red','blue','green','orange','purple','pink','brown','gray',
                   'cyan','magenta','yellow','lime','navy','teal','olive','maroon',
                   'aqua','fuchsia','gold','coral','crimson','indigo','khaki',
