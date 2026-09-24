@@ -1,4 +1,7 @@
 # Estimating π Using the Monte Carlo Method
+<p align="center">
+  <img src="./assets/demo.gif" width="800">
+</p>
 
 This project demonstrates how the value of **π (Pi)** can be estimated using the **Monte Carlo Method** and randomly generated points.
 
