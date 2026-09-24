@@ -20,14 +20,11 @@ $$
 
 The ratio between the number of points inside the circle and the total number of generated points approximates the ratio between the areas of the circle and the square:
 
-
+**N_inside / N_total ≈ πr² / (2r)² = π / 4**
 
 Therefore:
 
-$$
-\pi \approx 4
-\frac{N_{\text{inside}}}{N_{\text{total}}}
-$$
+**π ≈ 4 × (N_inside / N_total)**
 
 As the number of randomly generated points increases, the estimated value generally approaches the actual value of π.
 
