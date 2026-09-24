@@ -36,21 +36,6 @@ As the number of randomly generated points increases, the estimated value genera
 
 ---
 
-## Features
-
-* 🎲 Random point generation
-* 🔵 Visualization of the circle and square
-* 📍 Visualization of randomly generated points
-* 🧮 Monte Carlo estimation of π
-* 📊 Comparison between estimated π and the actual value
-* 🔢 Configurable number of samples
-* 📈 Visualization of the simulation process
-* 🖥️ Interactive Plotly visualization
-* ⚡ Dynamic point generation
-* 📐 Equal x and y coordinate scales
-
----
-
 ## Technologies
 
 | **Technology**        | **Purpose**                                         |
