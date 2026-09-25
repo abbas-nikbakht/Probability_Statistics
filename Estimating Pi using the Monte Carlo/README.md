@@ -9,7 +9,7 @@ The method is based on generating random points inside a square and determining 
 
 ---
 
-## 📌 Overview
+## 😊**Overview**
 
 The **Monte Carlo Method** is a computational technique that uses random sampling to approximate numerical results.
 
@@ -40,9 +40,9 @@ As the number of randomly generated points increases, the estimated value genera
 
 | **Technology**        | **Purpose**                                         |
 | --------------------- | --------------------------------------------------- |
-| 🐍 Python             | Core programming language                           |
-| 🔢 NumPy              | Random number generation and numerical calculations |
-| 📊 Plotly             | Interactive visualization                           |
+| Python             | Core programming language                           |
+| NumPy              | Random number generation and numerical calculations |
+| Plotly             | Interactive visualization                           |
 | 🎯 Monte Carlo Method | Estimation of π                                     |
 
 ---
@@ -70,7 +70,7 @@ http://127.0.0.1:8051
 
 ---
 
-## 🧠 Concepts Demonstrated
+## Concepts Demonstrated
 
 This project provides a practical introduction to several important concepts:
 
@@ -88,7 +88,7 @@ This project provides a practical introduction to several important concepts:
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 Possible extensions of this project include:
 
@@ -100,7 +100,7 @@ Possible extensions of this project include:
 * ✅ Color-coding the data to understand this point
 ---
 
-## 👤 Author
+## Author
 
 **Abbas Nikbakht**
 
