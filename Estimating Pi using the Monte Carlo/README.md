@@ -98,6 +98,7 @@ Possible extensions of this project include:
 * Plot the estimation error as the number of samples increases
 * ✅ Improve the interactive visualization
 * ✅ Color-coding the data to understand this point
+* ✅ Coloring the points inside the circle with one color, and the other points with a different color.
 ---
 
 ## Author
