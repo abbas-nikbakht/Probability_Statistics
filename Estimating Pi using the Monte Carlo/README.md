@@ -1,4 +1,7 @@
 # Estimating π Using the Monte Carlo Method
+<p align="center">
+  <img src="./assets/demo.gif" width="800">
+</p>
 
 This project demonstrates how the value of **π (Pi)** can be estimated using the **Monte Carlo Method** and randomly generated points.
 
@@ -6,7 +9,7 @@ The method is based on generating random points inside a square and determining 
 
 ---
 
-## 📌 Overview
+## 😊**Overview**
 
 The **Monte Carlo Method** is a computational technique that uses random sampling to approximate numerical results.
 
@@ -20,7 +23,7 @@ $$
 
 The ratio between the number of points inside the circle and the total number of generated points approximates the ratio between the areas of the circle and the square:
 
-**N_inside / N_total ≈ πr² / (2r)² = π / 4**
+$$ \frac{N_{\text{inside}}}{N_{\text{total}}} \approx \frac{\pi r^2}{(2r)^2} = \frac{\pi}{4} $$
 
 Therefore:
 
@@ -33,28 +36,13 @@ As the number of randomly generated points increases, the estimated value genera
 
 ---
 
-## Features
-
-* 🎲 Random point generation
-* 🔵 Visualization of the circle and square
-* 📍 Visualization of randomly generated points
-* 🧮 Monte Carlo estimation of π
-* 📊 Comparison between estimated π and the actual value
-* 🔢 Configurable number of samples
-* 📈 Visualization of the simulation process
-* 🖥️ Interactive Plotly visualization
-* ⚡ Dynamic point generation
-* 📐 Equal x and y coordinate scales
-
----
-
 ## Technologies
 
 | **Technology**        | **Purpose**                                         |
 | --------------------- | --------------------------------------------------- |
-| 🐍 Python             | Core programming language                           |
-| 🔢 NumPy              | Random number generation and numerical calculations |
-| 📊 Plotly             | Interactive visualization                           |
+| Python             | Core programming language                           |
+| NumPy              | Random number generation and numerical calculations |
+| Plotly             | Interactive visualization                           |
 | 🎯 Monte Carlo Method | Estimation of π                                     |
 
 ---
@@ -76,14 +64,13 @@ Run the Python script:
 ```bash
 python estimating_pi_monte_carlo.py
 ```
+After starting the application, open the local URL shown in the terminal, for example:
 
-The application generates random points inside a square and determines whether each point is located inside or outside the circle.
-
-The estimated value of π is calculated from the generated samples.
+http://127.0.0.1:8051
 
 ---
 
-## 🧠 Concepts Demonstrated
+## Concepts Demonstrated
 
 This project provides a practical introduction to several important concepts:
 
@@ -101,7 +88,7 @@ This project provides a practical introduction to several important concepts:
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 Possible extensions of this project include:
 
@@ -111,9 +98,10 @@ Possible extensions of this project include:
 * Plot the estimation error as the number of samples increases
 * ✅ Improve the interactive visualization
 * ✅ Color-coding the data to understand this point
+* Coloring the points inside the circle with one color, and the other points with a different color.
 ---
 
-## 👤 Author
+## Author
 
 **Abbas Nikbakht**
 
