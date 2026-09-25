@@ -23,7 +23,7 @@ $$
 
 The ratio between the number of points inside the circle and the total number of generated points approximates the ratio between the areas of the circle and the square:
 
-**N_inside / N_total ≈ πr² / (2r)² = π / 4**
+$$ \frac{N_{\text{inside}}}{N_{\text{total}}} \approx \frac{\pi r^2}{(2r)^2} = \frac{\pi}{4} $$
 
 Therefore:
 
