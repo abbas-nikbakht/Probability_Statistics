@@ -70,24 +70,6 @@ http://127.0.0.1:8051
 
 ---
 
-## Concepts Demonstrated
-
-This project provides a practical introduction to several important concepts:
-
-* **Monte Carlo Simulation**
-* **Random Sampling**
-* **Uniform Distribution**
-* **Numerical Estimation**
-* **Probability**
-* **Geometric Probability**
-* **Area Ratios**
-* **Circle and Square Geometry**
-* **Convergence**
-* **Statistical Approximation**
-* **Data Visualization**
-
----
-
 ## Future Improvements
 
 Possible extensions of this project include:
