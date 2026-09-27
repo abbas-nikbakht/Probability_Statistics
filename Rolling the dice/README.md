@@ -5,11 +5,17 @@
 
 An interactive **Monte Carlo simulation** that demonstrates how the **Expected Value** of a fair six-sided die can be estimated using repeated random sampling.
 
-The project combines **Python, NumPy, SciPy, Plotly, and Dash** to create a simple interactive visualization of convergence toward the theoretical expected value.
+For a fair six-sided die:
+
+$$
+\boxed{E[X] = 3.5}
+$$
+
+This project demonstrates this idea visually through an interactive Monte Carlo simulation.
 
 ---
 
-## 📌 Overview
+## 😊 Overview
 
 The expected value of a fair six-sided die is:
 
@@ -31,36 +37,10 @@ As the number of samples increases, the estimated expected value tends to conver
 
 This provides a simple demonstration of the **Law of Large Numbers** and the fundamental idea behind Monte Carlo methods.
 
----
-
-## ✨ Features
-
-* 🎲 Interactive dice rolling
-* 📊 Real-time Expected Value estimation
-* 📈 Interactive Plotly visualization
-* 🧮 Discrete probability distribution using `scipy.stats.rv_discrete`
-* 🖼️ Dynamic dice images
-* 🔄 Running average updated after every sample
-* 🌐 Interactive web dashboard powered by Dash
 
 ---
 
-## 🖥️ Demo
-
-Click **Rolling the dice** to generate a new random outcome.
-
-The application displays:
-
-1. The current dice outcome
-2. The corresponding dice image
-3. The estimated Expected Value
-4. A graph showing how the estimate changes as more samples are collected
-
-> **Expected Value of a fair die: 3.5**
-
----
-
-## 📈 Monte Carlo Estimation
+## Monte Carlo Estimation
 
 For \(n\) observed samples \(X_1, X_2, ..., X_n\), the Monte Carlo estimate of the Expected Value is the sample mean:
 
@@ -86,43 +66,7 @@ With more rolls, the estimate generally moves closer to:
 
 ---
 
-## 🎯 Probability Distribution
-
-The fair die is modeled as a discrete probability distribution:
-
-```python
-x = np.array([1, 2, 3, 4, 5, 6])
-
-p_x = np.array([
-    1/6,
-    1/6,
-    1/6,
-    1/6,
-    1/6,
-    1/6
-])
-```
-
-The distribution is created using SciPy:
-
-```python
-distribution_p_x = rv_discrete(
-    values=(x, p_x)
-)
-```
-
-A random sample is then generated from this distribution:
-
-```python
-sample_distribution_p_x = distribution_p_x.rvs(
-    size=1
-)[0]
-```
-
----
-
-
-## 🛠️ Technologies
+## Technologies
 
 | Technology | Purpose                           |
 | ---------- | --------------------------------- |
@@ -134,7 +78,7 @@ sample_distribution_p_x = distribution_p_x.rvs(
 
 ---
 
-## 📦 Installation
+## Installation
 
 
 
@@ -146,7 +90,7 @@ pip install dash numpy scipy plotly
 
 ---
 
-## ▶️ Run the Application
+## Run the Application
 
 If a proxy is enabled on your system, add the following lines before running the application to ensure that local connections to localhost and 127.0.0.1 bypass the proxy:
 
@@ -167,78 +111,9 @@ After starting the application, open the local URL shown in the terminal, for ex
 
 http://127.0.0.1:8050
 
-## 📁 Project Structure
-
-```text
-Rolling/
-│
-├── Rolling_dice.py
-│
-├── assets/
-│   ├── dice_1.png
-│   ├── dice_2.png
-│   ├── dice_3.png
-│   ├── dice_4.png
-│   ├── dice_5.png
-│   └── dice_6.png
-│
-└── README.md
-```
-
-### `Rolling_dice.py`
-
-Contains the Dash application, probability distribution, Monte Carlo sampling, Expected Value calculation, and Plotly visualization.
-
-### `assets/`
-
-Contains the dice images displayed by the Dash application.
-
-### `README.md`
-
-Project documentation and explanation of the underlying concepts.
-
 ---
 
-## 🧠 Concepts Demonstrated
-
-This project provides a practical introduction to several important concepts:
-
-* **Expected Value**
-* **Discrete Probability Distribution**
-* **Random Sampling**
-* **Sample Mean**
-* **Monte Carlo Simulation**
-* **Law of Large Numbers**
-* **Data Visualization**
-* **Interactive Dash Applications**
-
----
-
-## 🔬 Connection to Reinforcement Learning
-
-Monte Carlo simulation is also an important concept in **Reinforcement Learning**.
-
-In Reinforcement Learning, Monte Carlo methods estimate value functions from sampled experiences and complete episodes.
-
-The dice example provides a simple intuition:
-
-```text
-Random Samples
-      ↓
-Observed Outcomes
-      ↓
-Calculate Average
-      ↓
-Estimate Expected Value
-      ↓
-More Samples → Better Estimate
-```
-
-This simple experiment can therefore serve as an introduction to more advanced **Monte Carlo Prediction** methods used in Reinforcement Learning.
-
----
-
-## 🚀 Future Improvements
+## Future Improvements
 
 Possible extensions of this project include:
 
@@ -248,20 +123,6 @@ Possible extensions of this project include:
 * ✅ Display the theoretical Expected Value on the graph
 * [ ] Compare theoretical and empirical distributions
 * [ ] Add variance and standard deviation
-
----
-
-## 📚 Key Takeaway
-
-> **The more samples we collect, the closer the sample average tends to get to the true Expected Value.**
-
-For a fair six-sided die:
-
-$$
-\boxed{E[X] = 3.5}
-$$
-
-This project demonstrates this idea visually through an interactive Monte Carlo simulation.
 
 ---
 
