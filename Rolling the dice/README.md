@@ -5,14 +5,6 @@
 
 An interactive **Monte Carlo simulation** that demonstrates how the **Expected Value** of a fair six-sided die can be estimated using repeated random sampling.
 
-For a fair six-sided die:
-
-$$
-\boxed{E[X] = 3.5}
-$$
-
-This project demonstrates this idea visually through an interactive Monte Carlo simulation.
-
 ---
 
 ## 😊 Overview
@@ -34,13 +26,7 @@ $$
 In this project, the die is rolled repeatedly and the **sample mean** is calculated after every roll.
 
 As the number of samples increases, the estimated expected value tends to converge toward **3.5**.
-
 This provides a simple demonstration of the **Law of Large Numbers** and the fundamental idea behind Monte Carlo methods.
-
-
----
-
-## Monte Carlo Estimation
 
 For \(n\) observed samples \(X_1, X_2, ..., X_n\), the Monte Carlo estimate of the Expected Value is the sample mean:
 
